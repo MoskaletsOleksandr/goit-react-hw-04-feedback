@@ -1,21 +1,19 @@
 import PropTypes from 'prop-types';
-import { Component } from 'react';
 import { OptionList, OptionItem, OptionButton } from './FeedbackOptions.styled';
 
-export class FeedbackOptions extends Component {
-  render() {
-    return (
+export const FeedbackOptions = ({options, onLeaveFeedback}) => {
+      return (
       <div>
         <OptionList>
-          {this.props.options.map(stat => {
+          {options.map(option => {
             return (
-              <OptionItem key={stat}>
+              <OptionItem key={option}>
                 <OptionButton
-                  name={stat}
+                  name={option}
                   type="button"
-                  onClick={this.props.onLeaveFeedback}
+                  onClick={onLeaveFeedback}
                 >
-                  {stat}
+                  {option}
                 </OptionButton>
               </OptionItem>
             );
@@ -23,7 +21,7 @@ export class FeedbackOptions extends Component {
         </OptionList>
       </div>
     );
-  }
+
 }
 
 FeedbackOptions.propTypes = {

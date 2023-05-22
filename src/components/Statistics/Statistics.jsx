@@ -1,5 +1,4 @@
 import PropTypes from 'prop-types';
-import { Component } from 'react';
 import {
   StatisticList,
   StatisticItem,
@@ -7,40 +6,38 @@ import {
 } from './Statistics.styled';
 import { Notification } from 'components/Notification';
 
-export class Statistics extends Component {
-  render() {
-    return (
-      <div>
-        {!this.props.total ? (
+export const Statistics = ({total, arrayOfStatsKeys, statistics, positivePercentage}) => {
+  return (
+          <div>
+        {!total ? (
           <Notification message="There is no feedback" />
         ) : (
           <StatisticList>
-            {this.props.arrayOfStatsKeys.map(stat => {
+            {arrayOfStatsKeys.map(stat => {
               return (
                 <StatisticItem key={stat}>
                   <StatisticValue>
-                    {stat}: {this.props.state[stat]}
+                    {stat}: {statistics[stat]}
                   </StatisticValue>
                 </StatisticItem>
               );
             })}
             <StatisticItem>
-              <StatisticValue>Total: {this.props.total}</StatisticValue>
+              <StatisticValue>Total: {total}</StatisticValue>
             </StatisticItem>
             <StatisticItem>
               <StatisticValue>
-                Positive feedback: {this.props.positivePercentage}%
+                Positive feedback: {positivePercentage}%
               </StatisticValue>
             </StatisticItem>
           </StatisticList>
         )}
       </div>
-    );
-  }
+  )
 }
 
 Statistics.propTypes = {
-  state: PropTypes.objectOf(PropTypes.number).isRequired,
+  statistics: PropTypes.objectOf(PropTypes.number).isRequired,
   arrayOfStatsKeys: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
   total: PropTypes.number.isRequired,
   positivePercentage: PropTypes.number.isRequired,
