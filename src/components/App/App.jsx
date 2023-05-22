@@ -29,7 +29,10 @@ export const App = () => {
   return (
     <Container>
       <Section title="Please leave feedback">
-        <FeedbackOptions options={arrayOfStatsKeys} onLeaveFeedback={handleClick} />
+        <FeedbackOptions
+          options={arrayOfStatsKeys}
+          onLeaveFeedback={handleClick}
+        />
       </Section>
       <Section
         title="Statistics"

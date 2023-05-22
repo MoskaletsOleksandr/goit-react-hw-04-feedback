@@ -27,5 +27,6 @@ const getColorByPercentage = (positivePercentage, total) => {
 
 export const SectionStyled = styled.section`
   padding: 10px 20px;
-  background-color: ${props => getColorByPercentage(props.positivePercentage, props.total)};
+  background-color: ${props =>
+    getColorByPercentage(props.positivePercentage, props.total)};
 `;
